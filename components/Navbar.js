@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 export default function Navbar() {
 
   const router = useRouter()
-  const location  = router.pathname.split('/')[1]
+  const location  = router.asPath.split('/')[1]
   // get first path
   const [currentPath, setCurrentPath] = useState(null)
 
