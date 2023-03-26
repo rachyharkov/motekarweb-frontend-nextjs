@@ -14,12 +14,15 @@ export default function OurFamily() {
 
   useEffect(() => {
     setDomLoaded(true);
-    // swiperElRef.current.addEventListener("slidechange", (e) => {
-    //   setPositionnya(e.target.swiper.activeIndex);
-    // });
-    domLoaded && swiperElRef.current.swiper.slideTo(4, 0);
-  }, []);
-
+    if (domLoaded && swiperElRef.current) {
+      swiperElRef.current.swiper.slideTo(4, 0);
+      setPositionnya(swiperElRef.current.swiper.activeIndex);
+      swiperElRef.current.addEventListener("slidechange", (e) => {
+        setPositionnya(e.target.swiper.activeIndex);
+      });
+    }
+  }, [swiperElRef, domLoaded]);
+  
   const myOptions = {
     height: "100%",
     width: "100%",
@@ -27,7 +30,8 @@ export default function OurFamily() {
       autoplay: 0,
     },
   }
-
+  
+  
   return (
     <section className="section-vh-75 section-our-family">
       <div className="container-fluid section-our-family-inner section-inner text-center">
