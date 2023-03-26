@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export default function HeroLanding() {
 
   const startVideo = async () => {
@@ -14,7 +16,9 @@ export default function HeroLanding() {
     }
   }
 
-  setTimeout(startVideo,7000);
+  useEffect(() => {
+    setTimeout(startVideo,7000);
+  })
 
   return(
     <section className='section-vh-85 section-hero-landing'>

@@ -7,6 +7,7 @@ register()
 export default function WhatWeDo() {
   const swiperElRef = useRef(null);
   const [videos, setVideos] = useState([]);
+  const [domLoaded, setDomLoaded] = useState(false);
   
   const myOptions = {
     height: "100%",
@@ -27,6 +28,10 @@ export default function WhatWeDo() {
       }
     });
   };
+
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
 
   return (
     <section className="section-vh-75 section-what-we-do">
@@ -50,103 +55,108 @@ export default function WhatWeDo() {
               className="section-what-we-do-galleries"
               style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}
             >
-              <swiper-container
-                ref={swiperElRef}
-                class="mySwiper"
-                thumbs-swiper=".mySwiper2"
-                space-between="10"
-                navigation="true"
-                style={{
-                  "--swiper-navigation-color": "#fff",
-                  "--swiper-pagination-color": "#fff",
-                }}
-              >
-                <swiper-slide>
-                  <YouTube
-                    style={{ height: "100%", width: "100%" }}
-                    videoId="2J7xlDH4QkA"
-                    opts={myOptions}
-                    onReady={(event) => addVideo(event.target)}
-                    onStateChange={(event) => { if (event.data === 1) { stopAllVideosExcept(event.target) } }}
-                  />
-                </swiper-slide>
-                <swiper-slide>
-                  <YouTube
-                    style={{ height: "100%", width: "100%" }}
-                    videoId="F2tWmS3Lzic"
-                    opts={myOptions}
-                    onReady={(event) => addVideo(event.target)}
-                    onStateChange={(event) => { if (event.data === 1) { stopAllVideosExcept(event.target) } }}
-                  />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-                </swiper-slide>
-              </swiper-container>
+              {domLoaded && (
+                  <swiper-container
+                  ref={swiperElRef}
+                  class="mySwiper"
+                  thumbs-swiper=".mySwiper2"
+                  space-between="10"
+                  navigation="true"
+                  style={{
+                    "--swiper-navigation-color": "#fff",
+                    "--swiper-pagination-color": "#fff",
+                  }}
+                >
+                  <swiper-slide>
+                    <YouTube
+                      style={{ height: "100%", width: "100%" }}
+                      videoId="2J7xlDH4QkA"
+                      opts={myOptions}
+                      onReady={(event) => addVideo(event.target)}
+                      onStateChange={(event) => { if (event.data === 1) { stopAllVideosExcept(event.target) } }}
+                    />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <YouTube
+                      style={{ height: "100%", width: "100%" }}
+                      videoId="F2tWmS3Lzic"
+                      opts={myOptions}
+                      onReady={(event) => addVideo(event.target)}
+                      onStateChange={(event) => { if (event.data === 1) { stopAllVideosExcept(event.target) } }}
+                    />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+                  </swiper-slide>
+                </swiper-container>
+              )}
 
-              <swiper-container
-                class="mySwiper2"
-                space-between="10"
-                slides-per-view="4"
-                free-mode="true"
-                watch-slides-progress="true"
-                style={{
-                  'transform': 'scale(0.7)',
-                  'marginTop': '-13px'
-                }}
-              >
-                <swiper-slide>
-                  <img src="https://i3.ytimg.com/vi/2J7xlDH4QkA/maxresdefault.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://i3.ytimg.com/vi/F2tWmS3Lzic/maxresdefault.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                </swiper-slide>
-                <swiper-slide>
-                  <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-                </swiper-slide>
-              </swiper-container>
+              {domLoaded && (
+
+                <swiper-container
+                  class="mySwiper2"
+                  space-between="10"
+                  slides-per-view="4"
+                  free-mode="true"
+                  watch-slides-progress="true"
+                  style={{
+                    'transform': 'scale(0.7)',
+                    'marginTop': '-13px'
+                  }}
+                >
+                  <swiper-slide>
+                    <img src="https://i3.ytimg.com/vi/2J7xlDH4QkA/maxresdefault.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://i3.ytimg.com/vi/F2tWmS3Lzic/maxresdefault.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+                  </swiper-slide>
+                </swiper-container>
+              )}
             </div>
             <button className="btn btn-primary mt-3">
               View Our Extended Work

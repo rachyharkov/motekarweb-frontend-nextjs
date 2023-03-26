@@ -1,14 +1,9 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
-import 'animate.css'
-// import VisualizeStep from "../../components/VisualizeStep";
-
-const VisualizeStep = React.lazy(() => import('../../../components/VisualizeStep'))
+import VisualizeStep from "@/components/VisualizeStep";
 
 export default function WorkingProcess() {
 
   const [stepSelected, setStepSelected] = useState(1)
-  const [transitionState, setTransitionState] = useState(false)
-  const [clicked, setClicked] = useState(false)
 
   let activeStateIcon = 'working-process-step-selected-status expanded'
   let inactiveStateIcon = 'working-process-step-selected-status'
@@ -32,27 +27,11 @@ export default function WorkingProcess() {
   }
 
 
-  const runAutoChangeVisualStep = () => {
-    interval = setInterval(() => {
-      if(i == 4) {
-        i = 1
-      }
-      handleStepChange({target: {checked: true, value: i}})
-      i++
-    }, 6000)
-  }
-
   const handleStepChange = (e) => {
     if(e.target.checked) {
-      document.querySelector('.working-process-detail-visualization').classList.remove('animate__animated', 'animate__zoomIn')
-      document.querySelector('.working-process-detail-visualization').classList.add('animate__animated', 'animate__zoomOut')
       setStepSelected(e.target.value)
     }
   }
-  
-  useEffect(() => {
-    runAutoChangeVisualStep()
-  }, [])
 
 
   return(

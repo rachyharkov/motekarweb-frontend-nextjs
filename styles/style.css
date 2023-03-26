@@ -52,8 +52,7 @@
   }
 }
 /* END of CSSTransition */
-body {
-  font-family: 'Inter', sans-serif;
+#__next {
   background: var(--color-primary);
 }
 
@@ -122,10 +121,10 @@ main {
 }
 
 .section-text-general {
-  font-size: calc(0.55em + 1.5vmin);
+  font-size: calc(0.35em + 1.5vmin);
   line-height: calc(0.7em + 2vmin);
   font-weight: 400;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   margin: 1rem 0;
   color: var(--color-accent);
 }
@@ -464,7 +463,7 @@ main {
 }
 
 .section-what-we-do .section-what-we-do-inner h2 {
-  font-size: calc(1em + 2vmin);
+  font-size: calc(1em + 1.5vmin);
   margin: 1rem 0;
   font-weight: 800;
   line-height: calc(1em + 2vmin);
@@ -573,6 +572,7 @@ main {
   border-radius: 30px;
   border: none;
   background: var(--color-primary-light);
+  height: 350px;
 }
 
 .section-working-process .working-process-detail .card-body {
@@ -1144,7 +1144,8 @@ main {
 /* --------------------------------------- */
 
 .section-our-family {
-  /* background: var(--color-primary); */
+  background: url(../public/images/group-6.svg) no-repeat center center transparent;
+  background-size: cover;
   position: relative;
   overflow: hidden;
 }
@@ -1235,7 +1236,7 @@ main {
   position: absolute;
   bottom: 0;
   left: 0px;
-  background: url(/public/images/falling-stars-bottom.svg) no-repeat center center;
+  background: url(../public/images/falling-stars-bottom.svg) no-repeat center center;
   z-index: 0;
   width: 450px;
   height: 200px;
@@ -1246,8 +1247,8 @@ main {
   position: absolute;
   top: 0;
   right: 0px;
-  background: url(/public/images/falling-stars-top.svg) no-repeat center center;
-  z-index: -2;
+  background: url(../public/images/falling-stars-top.svg) no-repeat center center;
+  z-index: 0;
   width: 450px;
   height: 200px;
 }

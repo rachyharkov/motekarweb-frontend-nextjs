@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { getFaqs } from "../../../helper/api";
+import { getFaqs } from "@/helpers/api";
 import AOS from 'aos';
+import LoadPartial from "../LoadingComponentPartialWithFallback";
 
 export default function FrequentlyAskedQuestions() {
 
@@ -28,8 +29,14 @@ export default function FrequentlyAskedQuestions() {
     })
     getFaqs()
       .then((response) => {
-        setDataFaqs(response.data)
-        setLoading(false)
+        if (response.status == 200) {
+          setDataFaqs(response.data)
+          setLoading(false)
+        } else {
+          console.log('Error')
+          setLoading(false)
+        }
+        
       })
       .catch((error) => {
         console.log(error)
@@ -43,18 +50,18 @@ export default function FrequentlyAskedQuestions() {
         <p className="text-center mt-4">Feel free to click one of the questions below we have prepared for you.</p>
         <div className="row h-100">
           <div className="col-sm-12 col-md-8 col-lg-8 mx-auto p-2 faq-accordion">
-            {
-              loading == true ? 'Loading...' : dataFaqs.map((dataFaq, index) => {
-                return(
-                  <div className="accordion-item" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
-                    <button id={'accordion-button' + index} aria-expanded="false" onClick={toggleAccordion}><span className="accordion-title">{dataFaq.question}</span><span className="icon" aria-hidden="true"></span></button>
-                    <div className="faq-accordion-content">
-                      <p>{dataFaq.answer}</p>
+            <LoadPartial loading={loading} condition={dataFaqs.length > 0}>
+              { dataFaqs.map((dataFaq, index) => {
+                  return(
+                    <div className="accordion-item" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+                      <button id={'accordion-button' + index} aria-expanded="false" onClick={toggleAccordion}><span className="accordion-title">{dataFaq.question}</span><span className="icon" aria-hidden="true"></span></button>
+                      <div className="faq-accordion-content">
+                        <p>{dataFaq.answer}</p>
+                      </div>
                     </div>
-                  </div>
-                )
-              })
-            }
+                  )
+                })}
+            </LoadPartial>
             <p className="mt-4 text-center">
               Wise Man once said: Finding the right answer begins with the right question. Please <i>get in touch</i> if you have any further questions. We are all ears!
             </p>
