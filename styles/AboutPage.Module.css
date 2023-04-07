@@ -1,0 +1,140 @@
+.bold-title {
+  font-weight: 700;
+  font-size: calc(1.2em + 1vmin);
+  margin-bottom: 1rem;
+}
+
+.side-nav-title {
+  font-weight: 400;
+  font-size: calc(1.1em + 1vmin);
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.side-nav .side-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.side-nav .side-nav-list li a {
+  text-decoration: none;
+  padding: 0.5rem 0;
+}
+
+.side-nav .side-nav-btn-toggle {
+  display: none;
+}
+
+.side-nav .side-nav-item {
+  position: relative;
+}
+
+.side-nav .side-nav-item.active::after {
+  content: "\00BB";
+  position: absolute;
+  left: -15px;
+  bottom: 5px;
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  margin: 0;
+  line-height: 1em;
+  color: var(--color-accent);
+  font-weight: 800;
+}
+
+.side-nav .side-nav-item button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--color-primary-light-v2);
+  font-size: 1em;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+}
+
+.side-nav .side-nav-item.active button {
+  color: var(--color-accent);
+}
+
+.aboutcontent-enter {
+  opacity: 0;
+}
+
+.aboutcontent-enter-active {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.aboutcontent-exit {
+  opacity: 1;
+  position: absolute;
+  top: 0;
+}
+
+.aboutcontent-exit-active {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  position: absolute;
+  top: 0;
+}
+
+@media (max-width: 768px) {
+  .side-nav .side-nav-list {
+    height: 1.3em;
+    overflow: hidden;
+    position: relative;
+    margin: 2rem 0;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .side-nav {
+    position: relative;
+  }
+
+  .side-nav .side-nav-btn-toggle {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+    border: none;
+    outline: none;
+  }
+
+  .side-nav .side-nav-btn-toggle.false i {
+    font-size: 1em;
+    color: var(--color-primary);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .side-nav .side-nav-btn-toggle.true i {
+    transform: rotate(45deg);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .side-nav .side-nav-list.true {
+    height: 10em;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .side-nav .side-nav-list.true li {
+    opacity: 1;
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .side-nav .side-nav-list li {
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+  }
+}

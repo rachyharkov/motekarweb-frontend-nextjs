@@ -1,0 +1,123 @@
+.card-team {
+  width: 100%;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  --hover: 0;
+  margin: 1rem 0;
+}
+
+.card-team:hover {
+  --hover: 1;
+}
+
+
+.card-team h5 {
+  color: white;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 2;
+  text-align: right;
+}
+
+.card-team:hover p {
+  transform: scale(calc(1 + (var(--hover) * 0.1))) translateX(0);
+}
+
+.card-team p {
+  color: #fff;
+  transform: scale(calc(1 + (var(--hover) * 0.1))) translateX(200%);
+  transition: transform 0.2s;
+  position: absolute;
+  top: 43px;
+  right: 30px;
+  z-index: 2;
+  font-size: 0.6rem;
+}
+
+.card-team figure.card-team-image {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  transition: background 0.2s;
+  --bg: hsl(390 80% calc(60% - (var(--hover) * 10%)));
+  --accent: hsl(19, 84%, 51%);
+  background:
+    radial-gradient(circle at top left, var(--accent), transparent 75%),
+    var(--bg);
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+.card-team figure.card-team-image img {
+  width: 130px;
+  object-fit: cover;
+  border-radius: 12px;
+  position: absolute;
+  top: 40px;
+  left: 30px;
+  z-index: 1;
+  transform:
+    translateX(calc(var(--hover) * -15%))
+    scale(calc(1 + (var(--hover) * 0.1)));
+  transition: transform 0.2s;
+}
+
+.card-team .card-team-social {
+  position: absolute;
+  bottom: -20%;
+  right: 30px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.card-team .card-team-social button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+  transform: translateY(50%);
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+}
+
+.card-team .card-team-social button:hover {
+  color: #fff;
+}
+
+.card-team:hover .card-team-social {
+  bottom: 20px;
+}
+
+.card-team:hover .card-team-social button:nth-child(1) {
+  transform: translateY(0);
+  transition-delay: 0.1s;
+  opacity: 1;
+}
+
+.card-team:hover .card-team-social button:nth-child(2) {
+  transform: translateY(0);
+  transition-delay: 0.2s;
+  opacity: 1;
+}
+
+.card-team:hover .card-team-social button:nth-child(3) {
+  transform: translateY(0);
+  transition-delay: 0.3s;
+  opacity: 1;
+}
+
+.card-team:hover .card-team-social button:nth-child(4) {
+  transform: translateY(0);
+  transition-delay: 0.4s;
+  opacity: 1;
+}
