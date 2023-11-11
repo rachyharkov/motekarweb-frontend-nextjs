@@ -1,6 +1,7 @@
 // import React from "react";
 import { member } from "@/data/member"
-import { AboutPageLayout } from './';
+// import LazyLoad from "react-lazy-load";
+import Image from "next/image";
 
 function OurTeam({ onClickTeamNameCallback }) {
 
@@ -18,7 +19,7 @@ function OurTeam({ onClickTeamNameCallback }) {
                 <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6" key={index}>
                   <div className="card-team">
                     <figure className="card-team-image">
-                      <img src={'images/' + member[key].image_transparent} alt={'member' + member[key].nama} />
+                      <Image src={'/images/' + member[key].image_transparent} alt={'member' + member[key].nama} objectFit="contain" width={300} height={600}/>
                     </figure>
                     <h5 className="card-team-title" style={{'cursor': 'pointer'}} onClick={() => onClickTeamNameCallback('member-info', member[key])}>{member[key].nama}</h5>
                     <p className="card-team-subtitle">{member[key].jabatan}</p>
